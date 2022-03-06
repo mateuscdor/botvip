@@ -1,7 +1,11 @@
-/**
-   * Create By Dika Ardnt.
-   * Contact Me on wa.me/6288292024190
-   * Follow https://github.com/DikaArdnt
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+⚠️⚠️ ATENÇÃO ⚠️⚠️
+
+Essa versão de software é paga. Peço que não divulgue ela
+*
+Caso divulgue algum comando deixe os créditos, fazer ele foi desgaste. 
+*
+Agradeço pela compreensão. 
 */
 
 require('./config')
