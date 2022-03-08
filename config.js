@@ -1,7 +1,10 @@
-/**
-   * Create By Dika Ardnt.
-   * Contact Me on wa.me/6288292024190
-   * Follow https://github.com/DikaArdnt
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+⚠️⚠️ ATENÇÃO ⚠️⚠️
+Essa versão de software é paga. Peço que não divulgue ela
+*
+Caso divulgue algum comando deixe os créditos, fazer ele foi desgaste. 
+*
+Agradeço pela compreensão. 
 */
 
 const fs = require('fs')
@@ -21,18 +24,18 @@ global.APIKeys = {
 global.owner = ['559491423691','559491423691','559491423691','559491423691','559491423691']
 global.packname = '🔎 bot de consultas - Karma'
 global.author = '🛠 www.irisbot.com.br'
-global.sessionName = 'bat'
+global.sessionName = 'batSession'
 global.prefa = ['/']
 global.sp = '⭔'
 global.mess = {
     success: '✓ Success',
-    admin: 'Fitur Khusus Admin Group!',
-    botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
-    owner: 'Fitur Khusus Owner Bot',
-    group: 'Fitur Digunakan Hanya Untuk Group!',
-    private: 'Fitur Digunakan Hanya Untuk Private Chat!',
-    bot: 'Fitur Khusus Pengguna Nomor Bot',
-    wait: 'Loading...',
+    admin: 'n',
+    botAdmin: 'n',
+    owner: 'n',
+    group: 'n',
+    private: 'n',
+    bot: 'n',
+    wait: 'Aguarde...',
 }
 global.thumb = fs.readFileSync('./lib/bat.jpg')
 
