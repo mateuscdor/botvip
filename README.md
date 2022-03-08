@@ -3,7 +3,7 @@ Base WhatsApp Bot Multi Device
 
 
 <p align="center">
-	<img src="https://telegra.ph/file/39f83106b3cfe2125c39a.jpg" width="20%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="https://telegra.ph/file/39f83106b3cfe2125c39a.jpg" width="45%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 <h1 align="center">Karma Bot</h1>
 
