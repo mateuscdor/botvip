@@ -155,7 +155,7 @@ async function startHisoka() {
     bat.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect } = update
         if (connection === 'close') {
-            lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startHisoka() : console.log('Koneksi Terputus...')
+            lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startHisoka() : console.log('Tentando me Conectar...')
         }
         console.log('Perae cabaçu to conectando...', update)
     })
