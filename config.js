@@ -20,14 +20,19 @@ global.APIKeys = {
 	'https://zenzapi.xyz': 'Your Key',
 }
 
-// Other
+// Outros
 global.owner = ['559491423691','559491423691','559491423691','559491423691','559491423691']
+global.sessionName = 'batSession'
+
+// Edite apenas isso:
 global.packname = '🔎 bot de consultas - Karma'
 global.author = '🛠 www.irisbot.com.br'
-global.sessionName = 'batSession'
 global.apidados = 'Coloque sua api de consultas aqui';
 global.prefa = ['/']
 global.sp = '⭔'
+// Fim
+
+
 global.mess = {
     success: '✓ Success',
     admin: 'n',
