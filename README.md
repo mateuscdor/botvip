@@ -3,7 +3,7 @@ Base WhatsApp Bot Multi Device
 
 
 <p align="center">
-	<img src="https://telegra.ph/file/39f83106b3cfe2125c39a.jpg" width="35%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="https://telegra.ph/file/39f83106b3cfe2125c39a.jpg" width="20%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 <h1 align="center">Karma Bot</h1>
 
@@ -64,5 +64,3 @@ License: [MIT](https://en.wikipedia.org/wiki/MIT_License)
 ## Contatos & vendas de api:
 * [`WhatsApp Markos`](https://wa.me/5594991423691)
 * [`WhatsApp Dark`](https://wa.me/5517991134416)
-
-é isso tmj
