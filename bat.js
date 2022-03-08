@@ -61,7 +61,6 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
         const botNumber = await bat.decodeJid(bat.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
-        const apidados = 'http://localhost:3000';
         const text = q = args.join(" ")
         const quoted = m.quoted ? m.quoted : m
 	const isPremium2 = prem2.includes(m.sender)
@@ -219,6 +218,9 @@ break
 
 //----------------------------- FIM ------------------------------\\
 
+
+//----------------------------- COMANDOS DE ADMNISTRAÇÃO ------------------------------\\
+
             case 'menu2':
                 m.reply('┏━「🚀 *TODOS*」━┓\n*┃ •* /planos\n*┃ •* /delete\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「💬 *GRUPOS*」━┓\n*┃ •* /Marcar \n*┃ •* /Hide \n*┃ •* /Ban \n*┃ •* /TempBan \n*┃ •* /Add \n*┃ •* /Promote \n*┃ •* /demote \n┗━━━━━━━━━━━━━━┛\n\n\n┏━「🔎 *CONSULTAS*」━┓\n*┃ •* /tel (1, 2 e 3)\n*┃ •* /placa\n*┃ •* /nome\n*┃ •* /cpf (1, 2 e 3)\n*┃ •* /cep\n*┃ •* /ip\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「👤 *DONO*」━┓\n*┃ •* /join\n*┃ •* /unblock\n┗━━━━━━━━━━━━━━┛')
                 break
@@ -248,10 +250,10 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                     if (!isBotAdmins) throw (mess.only.botadm)
                     if (!batdmins) throw (mess.only.gcadmin)
                     let users4 = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-                await bat.groupParticipantsUpdate(m.chat, [users4], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+                await bat.groupParticipantsUpdate(m.chat, [users4], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
            m.reply(`Pronto, em 5 minutos eu ja adiciono essa pessoa de volta ao grupo, isso se ela não tiver privado...`)
                 await sleep(300000)
-           await bat.groupParticipantsUpdate(m.chat, [users4], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+           await bat.groupParticipantsUpdate(m.chat, [users4], 'add').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
             }
             break
 	case 'kick': case 'ban': {
@@ -259,7 +261,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
 		if (!m.isGroup) throw (mess.only.group)
                 if (!isBotAdmins) throw ("como  vou fzr isso se eu nem sou adm?")
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
     case 'donate': case 'contratar': case 'criador': case 'owner': case '1234aaaaadonate': {
@@ -272,7 +274,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalido!'
                 m.reply('espere meu nobre')
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
-                await bat.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+                await bat.groupAcceptInvite(result).then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
             }
             break
 	case 'add': {
@@ -280,7 +282,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                 if (!isBotAdmins) throw (mess.only.botadm)
                 if (!batdmins) throw (mess.only.gcadmin)
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await bat.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await bat.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
 	case 'promote': {
@@ -288,7 +290,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                 if (!isBotAdmins) throw (mess.only.botadm)
                 if (!batdmins) throw (mess.only.gcadmin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace('👮‍♂️ Mais um com poderes administrativos admnistrativos')
-		await bat.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await bat.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
 	case 'demote': {
@@ -296,13 +298,13 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                 if (!isBotAdmins) throw (mess.only.botadm)
                 if (!batdmins) throw (mess.only.gcadmin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await bat.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await bat.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
         case 'unblock': {
 		if (!isCreator) throw ("comando exclusivo para meu dono")
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await bat.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await bat.updateBlockStatus(users, 'unblock').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
 	case 'delete': case 'del': case 'd': case 'apagar': {
@@ -313,7 +315,8 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
             }
             break
 
-            
+//----------------------------- FIM ------------------------------\\
+// este comando está em manutenção 👇
             case 'puxada':
                 if (!isCreator) throw (`meu dono kkk`)
 				if(Puxada){
@@ -325,7 +328,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
 				}
 			break
 
-
+//----------------------------- CONSULTAS E MENU's ------------------------------\\
 case 'consultas':
 const sections = [
     {
@@ -395,7 +398,7 @@ break
     var query = text
     if(query.length < 7 || query.length > 11) return m.reply('ERRO\nA placa deve conter 7 dígitos!\nUso: /placa JYE9708');
     m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕`)
-    xx = await fetchJson(`${apidados}/placa/${text}`)
+    xx = await fetchJson(`${global.apidados}/placa/${text}`)
 if (xx.Nome != undefined) {
 
 
@@ -458,7 +461,7 @@ case 'nome':
 		  
     m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`);
     try {
-    api = await axios.get(`${apidados}/nome/${q}`)
+    api = await axios.get(`${global.apidados}/nome/${q}`)
 
     if (api.data.Nome != undefined) {
 retorno = `═════════════════════
@@ -492,7 +495,7 @@ break
    		            if(!isPremium2) throw (`👑 *ESSE COMANDO SÓ PODE SER USADO SE FOR VIP*\n\n💰 PARA COMPRAR VIP DIGITE:\n\n/planos\n/contratar`)
                     if(args.length < 1) return m.reply('✅ Para usar esse comando use /nome + o nome da pessoa.');
 		    m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`);
-                    xx = await fetchJson(`${apidados}/nome/${text}`)
+                    xx = await fetchJson(`${global.apidados}/nome/${text}`)
                     if (xx.Cpf != undefined) {
                         consulta = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
@@ -640,7 +643,7 @@ m.reply(consulta)
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟭\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf1 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟭\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf1 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${apidados}/cpf3/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${text}`)
  
 if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -680,7 +683,7 @@ case 'cpf2':
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟮\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de CPF, retorna os dados do portador. Incluindo dados Tipo 1 + número de RG, nome do pai e local de nascimento.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf2 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟮\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de CPF, retorna os dados do portador. Incluindo dados Tipo 1 + número de RG, nome do pai e local de nascimento.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf2 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${apidados}/cpf2/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf2/${text}`)
  
               if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -750,7 +753,7 @@ m.reply(consulta)
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟯\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf3 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟯\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf3 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${apidados}/cpf3/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${text}`)
  
 if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -822,7 +825,7 @@ m.reply(consulta)
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...*`)
-                xx = await fetchJson(`${apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
  
 if (xx.Nome != undefined) {
     let buttons6 = [
@@ -874,7 +877,7 @@ if (xx.Nome != undefined) {
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                xx = await fetchJson(`${apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
  
 if (xx.Nome != undefined) {
     consulta = `═════════════════════
@@ -928,10 +931,10 @@ m.reply(consulta)
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                xx = await fetchJson(`${apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
                 if(xx.CpfCnpj.length > 11) return m.reply('O cpf localizado neste númrto era maior que 11 logo n vou conseguir encontrar (suspeito q seja um cnpj)');
                 if (xx.CpfCnpj != undefined) {
-                apii = await fetchJson(`${apidados}/cpf3/${xx.CpfCnpj}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${xx.CpfCnpj}`)
 
 
                   consulta = `═════════════════════
@@ -996,7 +999,7 @@ m.reply(consulta)
     if(resultado2.length == 10) {
         var resultado3 = resultado2.replace(/(\d{2})/, "$19")
         m.reply(`Estou consultando, mas nota-se que seu numero só tem *10 digitos*, então fiz uma pequena mudança *adicionando* um 9.\n\nEra assim: ${resultado2}\nDeixei assim: ${resultado3}\n\n Caso eu tenha configurado errado, ajuste manualmente e puxe usando o /tel`);
-        xxa = await fetchJson(`${apidados}/telefone/${resultado3}`)
+        xxa = await fetchJson(`${global.apidados}/telefone/${resultado3}`)
         if (xxa.Nome != undefined) {
         consultaa = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
@@ -1030,7 +1033,7 @@ ENDEREÇO:
 
     if(resultado2.length == 11) {
                 m.reply(`Aguarde ${pushname}, estou consultando os dados dessa pessoa...`)
-    xx = await fetchJson(`${apidados}/telefone/${resultado2}`)
+    xx = await fetchJson(`${global.apidados}/telefone/${resultado2}`)
    if (xx.Nome != undefined) {
     consulta = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
@@ -1068,10 +1071,10 @@ var resultadok = usersk.replace("@s.whatsapp.net", "");
 var resultado2k = resultadok.replace(/(\d{2})/, "");
 var resultado3k = resultado2k.replace(/(\d{2})/, "$19")
 if(resultado2k.length < 11 || resultado2k.length > 11) {
-xx = await fetchJson(`${apidados}/telefone/${resultado3k}`)
+xx = await fetchJson(`${global.apidados}/telefone/${resultado3k}`)
 
 // await sleep(2000)
-apii = await fetchJson(`${apidados}/cpf/${xx.CpfCnpj}`)
+apii = await fetchJson(`${global.apidados}/cpf/${xx.CpfCnpj}`)
 //  await sleep(1200) 
 cer = await fetchJson(`https://cep.awesomeapi.com.br/json/${apii.Cep}`)
 //3
@@ -1128,10 +1131,10 @@ m.reply(consulta)
 // m.reply(`⚠️ LOCALIZAÇÃO NÃO ENCONTRADA!`)
 }
 }
-xx = await fetchJson(`${apidados}/telefone/${resultado2k}`)
+xx = await fetchJson(`${global.apidados}/telefone/${resultado2k}`)
 
 // await sleep(2000)
-apii = await fetchJson(`${apidados}/cpf/${xx.CpfCnpj}`)
+apii = await fetchJson(`${global.apidados}/cpf/${xx.CpfCnpj}`)
 viacep = await fetchJson(`https://viacep.com.br/ws/${apii.Cep}/json/`)
 //  await sleep(1200) 
 cer = await fetchJson(`https://cep.awesomeapi.com.br/json/${apii.Cep}`)
