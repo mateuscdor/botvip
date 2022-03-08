@@ -30,11 +30,11 @@ global.sessionName = 'batSession'
 global.packname = 'nome da fig'
 global.author = 'autor na desc da fig'
 
-// Api que eu te mandei (coloque sem o https:// e sem o / no final)
-// Forma incorreta: https://suApi.herokuapp.com/
-// Forma correta: suApi.herokuapp.com
-global.apidados = 'Coloque sua api de consultas aqui'; // Compre sua api com o markos: wa.me/559491423691
-global.apiToken = 'Coloque seu token aqui'; // Compre seu token com o markos: wa.me/559491423691
+// Api que eu te mandei (coloque com o https:// mas sem o / no final)
+// Forma correta: https://suApi.herokuapp.com
+// Forma incorreta: suApi.herokuapp.com/
+global.apidados = 'https://apitestekarma.herokuapp.com'; // Compre sua api com o markos: wa.me/559491423691
+global.apiToken = 'coloque sua api aqui'; // Compre seu token com o markos: wa.me/559491423691
 
 // Não é importante
 global.prefa = ['/']
