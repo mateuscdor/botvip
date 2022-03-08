@@ -1,10 +1,14 @@
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 ⚠️⚠️ ATENÇÃO ⚠️⚠️
 Essa versão de software é paga. Peço que não divulgue ela
 *
 Caso divulgue algum comando deixe os créditos, fazer ele foi desgaste. 
 *
 Agradeço pela compreensão. 
+
+📝 NOTAS:
+  * Algumas cases criada por Dark
+  * Total agradecimento e créditos a ele <3
 */
 
 //api do zapo 
