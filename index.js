@@ -49,7 +49,7 @@ async function startHisoka() {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let pa7rick = await bat.sendContact(callerId, global.owner)
-    bat.sendMessage(callerId, { text: `Sistem otomatis block!\nJangan menelpon bot!\nSilahkan Hubungi Owner Untuk Dibuka !`}, { quoted : pa7rick })
+    bat.sendMessage(callerId, { text: `Puts, para sua infelicidade eu tenho sitema antiblock KKKKKKKKK\n\nnão chore, chame meu dono e se resolva com ele!`}, { quoted : pa7rick })
     await sleep(8000)
     await bat.updateBlockStatus(callerId, "block")
     }
@@ -142,7 +142,7 @@ async function startHisoka() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await bat.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await bat.getName(i + '@s.whatsapp.net')}\nFN:${await bat.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:okeae2410@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/cak_haho\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await bat.getName(i + '@s.whatsapp.net')}\nFN:${await bat.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Meu dono\nitem2.EMAIL;type=INTERNET:markos.wythor@gmail.com\nitem2.X-ABLabel:Gmail\nitem3.URL:https://instagram.com/markoswythor\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Brasil;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	bat.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
