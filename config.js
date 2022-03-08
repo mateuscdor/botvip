@@ -25,6 +25,7 @@ global.owner = ['559491423691','559491423691','559491423691','559491423691','559
 global.packname = '🔎 bot de consultas - Karma'
 global.author = '🛠 www.irisbot.com.br'
 global.sessionName = 'batSession'
+global.apidados = 'http://localhost:3000';
 global.prefa = ['/']
 global.sp = '⭔'
 global.mess = {
