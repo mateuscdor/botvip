@@ -53,14 +53,14 @@ $ node .
 ```
 
 ## Agradeciemntos:
-* [`@adiwajshing/baileys-md`](https://github.com/adiwajshing/baileys/tree/multi-device)
-* [`Nurutomo`](https://github.com/Nurutomo)
-* [`Mhankbarbar`](https://github.com/MhankBarBar)
+* [`@Dark yt`](https://www.youtube.com/channel/UCcNXUT8f4grmNxQCxiZX95Q)
+* [`@Mawy dev`](https://www.youtube.com/c/MawyDev)
+* [`@MarkosWythor`](https://github.com/markoswythorr)
 
 License: [MIT](https://en.wikipedia.org/wiki/MIT_License)
 
-## Contatos:
-* [`WhatsApp`](https://wa.me/5594991423691)
-* [`Instagram`](https://instagram.com/markoswythor)
+## Contatos & vendas de api:
+* [`WhatsApp Markos`](https://wa.me/5594991423691)
+* [`WhatsApp Dark`](https://wa.me/5517991134416)
 
 é isso tmj
