@@ -54,6 +54,8 @@ $ node .
 
 ## Agradeciemntos:
 * [`@Dark yt`](https://www.youtube.com/channel/UCcNXUT8f4grmNxQCxiZX95Q)
+* [`@Dark github`](https://github.com/DarkViPs)
+* [`@DikaArdnt - Base`](https://github.com/DikaArdnt)
 * [`@Mawy dev`](https://www.youtube.com/c/MawyDev)
 * [`@MarkosWythor`](https://github.com/markoswythorr)
 
