@@ -24,10 +24,18 @@ global.APIKeys = {
 global.owner = ['559491423691','559491423691','559491423691','559491423691','559491423691']
 global.sessionName = 'batSession'
 
-// Edite apenas isso:
-global.packname = '🔎 bot de consultas - Karma'
-global.author = '🛠 www.irisbot.com.br'
+// Edite apenas o nescessário:
+
+// Edições na desc da fig:
+global.packname = 'nome da fig'
+global.author = 'autor na desc da fig'
+
+// Api que eu te mandei (coloque sem o https:// e sem o / no final)
+// Forma incorreta: https://suApi.herokuapp.com/
+// Forma correta: suApi.herokuapp.com
 global.apidados = 'Coloque sua api de consultas aqui';
+
+// Não é importante
 global.prefa = ['/']
 global.sp = '⭔'
 // Fim
