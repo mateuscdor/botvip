@@ -1,6 +1,6 @@
 {
-	"name": "Bot-vip",
-	"description": "WhatsApp Bot Usando a Baileys",
+	"name": "bot-vip",
+	"description": "WhatsApp Bot Usando como base a Baileys",
 	"repository": "https://github.com/HACKERESOBERANO/botvip",
 	"logo": "https://node-js-sample.herokuapp.com/node.png",
 	"keywords": ["multi-device"]
