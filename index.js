@@ -34,7 +34,7 @@ const getVersionWaweb = () => {
     return version
 }
 
-async function startHisoka() {
+async function startbat() {
     const bat = batConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
@@ -155,7 +155,7 @@ async function startHisoka() {
     bat.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect } = update
         if (connection === 'close') {
-            lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startHisoka() : console.log('Tentando me Conectar...')
+            lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startbat() : console.log('Tentando me Conectar...')
         }
         console.log('Perae cabaçu to conectando...', update)
     })
@@ -480,7 +480,7 @@ async function startHisoka() {
     return bat
 }
 
-startHisoka()
+startbat()
 
 
 let file = require.resolve(__filename)
