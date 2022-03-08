@@ -402,7 +402,7 @@ break
     var query = text
     if(query.length < 7 || query.length > 11) return m.reply('ERRO\nA placa deve conter 7 dígitos!\nUso: /placa JYE9708');
     m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕`)
-    xx = await fetchJson(`${global.apidados}/placa/${text}`)
+    xx = await fetchJson(`${global.apidados}/placa/${text}/${global.apiToken}`)
 if (xx.Nome != undefined) {
 
 
@@ -465,7 +465,7 @@ case 'nome':
 		  
     m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`);
     try {
-    api = await axios.get(`${global.apidados}/nome/${q}`)
+    api = await axios.get(`${global.apidados}/nome/${q}/${global.apiToken}`)
 
     if (api.data.Nome != undefined) {
 retorno = `═════════════════════
@@ -499,7 +499,7 @@ break
    		            if(!isPremium2) throw (`👑 *ESSE COMANDO SÓ PODE SER USADO SE FOR VIP*\n\n💰 PARA COMPRAR VIP DIGITE:\n\n/planos\n/contratar`)
                     if(args.length < 1) return m.reply('✅ Para usar esse comando use /nome + o nome da pessoa.');
 		    m.reply(`Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`);
-                    xx = await fetchJson(`${global.apidados}/nome/${text}`)
+                    xx = await fetchJson(`${global.apidados}/nome/${text}/${global.apiToken}`)
                     if (xx.Cpf != undefined) {
                         consulta = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
@@ -531,7 +531,7 @@ para apagar esta consulta digite /d
     if(query.length < 6) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗜𝗣\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta o número de IP, obtém dados do IP, como qual é o provedor, ip reverso, país, estado, cidade e as coordenadas de onde ele está localizado.\n\nFormato:\n204.152.203.157\n\n/ip 204.152.203.157\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗜𝗣\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta o número de IP, obtém dados do IP, como qual é o provedor, ip reverso, país, estado, cidade e as coordenadas de onde ele está localizado.\n\nFormato:\n204.152.203.157\n\n/ip 204.152.203.157\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                hehe = await fetchJson(`http://ip-api.com/json/${text}`)
+                hehe = await fetchJson(`http://ip-api.com/json/${text}/${global.apiToken}`)
  
         if (hehe.country != undefined) {
     consulta = `═════════════════════
@@ -571,7 +571,7 @@ await bat.sendMessage(m.chat, { location: { degreesLatitude: hehe.lat, degreesLo
     if(query.length < 4 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗘𝗣\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta de CEP, obtém informações sobre os logradouros (como nome de rua, avenida, alameda, beco, travessa, praça etc), nome de bairro, cidade e estado onde ele está localizado.\n\nFormato:\n70040010\nou\n70040-010\n\n/cep 70040010\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗘𝗣\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta de CEP, obtém informações sobre os logradouros (como nome de rua, avenida, alameda, beco, travessa, praça etc), nome de bairro, cidade e estado onde ele está localizado.\n\nFormato:\n70040010\nou\n70040-010\n\n/cep 70040010\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                hehee = await fetchJson(`https://cep.awesomeapi.com.br/json/${text}`)
+                hehee = await fetchJson(`https://cep.awesomeapi.com.br/json/${text}/${global.apiToken}`)
  
 if (hehee.cep != undefined) {
     consulta = `═════════════════════
@@ -647,7 +647,7 @@ m.reply(consulta)
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟭\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf1 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟭\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf1 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${global.apidados}/cpf3/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${text}/${global.apiToken}`)
  
 if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -687,7 +687,7 @@ case 'cpf2':
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟮\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de CPF, retorna os dados do portador. Incluindo dados Tipo 1 + número de RG, nome do pai e local de nascimento.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf2 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟮\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de CPF, retorna os dados do portador. Incluindo dados Tipo 1 + número de RG, nome do pai e local de nascimento.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf2 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${global.apidados}/cpf2/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf2/${text}/${global.apiToken}`)
  
               if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -757,7 +757,7 @@ m.reply(consulta)
     if(query.length < 11 || query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟯\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf3 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗖𝗣𝗙 - 𝗧𝗜𝗣𝗢 𝟯\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta simples de CPF, retorna os dados do portador.\n\nFormato:\n01441452001\nou\n014.414.520-01\n\n/cpf3 01441452001\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                apii = await fetchJson(`${global.apidados}/cpf3/${text}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${text}/${global.apiToken}`)
  
 if (apii.Cpf != undefined) {
     consulta = `═════════════════════
@@ -829,7 +829,7 @@ m.reply(consulta)
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...*`)
-                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
  
 if (xx.Nome != undefined) {
     let buttons6 = [
@@ -881,7 +881,7 @@ if (xx.Nome != undefined) {
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
  
 if (xx.Nome != undefined) {
     consulta = `═════════════════════
@@ -935,10 +935,10 @@ m.reply(consulta)
     if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
-                xx = await fetchJson(`${global.apidados}/telefone/${text}`)
+                xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
                 if(xx.CpfCnpj.length > 11) return m.reply('O cpf localizado neste númrto era maior que 11 logo n vou conseguir encontrar (suspeito q seja um cnpj)');
                 if (xx.CpfCnpj != undefined) {
-                apii = await fetchJson(`${global.apidados}/cpf3/${xx.CpfCnpj}`)
+                apii = await fetchJson(`${global.apidados}/cpf3/${xx.CpfCnpj}/${global.apiToken}`)
 
 
                   consulta = `═════════════════════
@@ -1003,7 +1003,7 @@ m.reply(consulta)
     if(resultado2.length == 10) {
         var resultado3 = resultado2.replace(/(\d{2})/, "$19")
         m.reply(`Estou consultando, mas nota-se que seu numero só tem *10 digitos*, então fiz uma pequena mudança *adicionando* um 9.\n\nEra assim: ${resultado2}\nDeixei assim: ${resultado3}\n\n Caso eu tenha configurado errado, ajuste manualmente e puxe usando o /tel`);
-        xxa = await fetchJson(`${global.apidados}/telefone/${resultado3}`)
+        xxa = await fetchJson(`${global.apidados}/telefone/${resultado3}/${global.apiToken}`)
         if (xxa.Nome != undefined) {
         consultaa = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
@@ -1037,7 +1037,7 @@ ENDEREÇO:
 
     if(resultado2.length == 11) {
                 m.reply(`Aguarde ${pushname}, estou consultando os dados dessa pessoa...`)
-    xx = await fetchJson(`${global.apidados}/telefone/${resultado2}`)
+    xx = await fetchJson(`${global.apidados}/telefone/${resultado2}/${global.apiToken}`)
    if (xx.Nome != undefined) {
     consulta = `═════════════════════
 🕵️  CONSULTA REALIZADA  🕵️
