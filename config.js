@@ -33,7 +33,7 @@ global.author = 'autor na desc da fig'
 // Api que eu te mandei (coloque sem o https:// e sem o / no final)
 // Forma incorreta: https://suApi.herokuapp.com/
 // Forma correta: suApi.herokuapp.com
-global.apidados = 'Coloque sua api de consultas aqui';
+global.apidados = 'Coloque sua api de consultas aqui'; // Compre sua api o markos: wa.me/559491423691
 
 // Não é importante
 global.prefa = ['/']
