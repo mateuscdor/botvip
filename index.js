@@ -38,7 +38,7 @@ async function startHisoka() {
     const bat = batConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['Hisoka Multi Device','Safari','1.0.0'],
+        browser: ['Bot de consultas Multi Device','Safari','1.0.0'],
         auth: state,
         version: getVersionWaweb() || [2, 2204, 13]
     })
@@ -157,7 +157,7 @@ async function startHisoka() {
         if (connection === 'close') {
             lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startHisoka() : console.log('Koneksi Terputus...')
         }
-        console.log('Koneksi Terhubung...', update)
+        console.log('Perae cabaçu to conectando...', update)
     })
 
     bat.ev.on('creds.update', saveState)
