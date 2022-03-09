@@ -19,7 +19,7 @@ Bot usando como base a api [`@adiwajshing/baileys-md`](https://github.com/adiwaj
 
 
 ```bash
-git clone https://github.com/HACKERESOBERANO/batvip/
+git clone https://github.com/HACKERESOBERANO/botvip/
 cd batvip
 npm install
 ```
@@ -32,7 +32,7 @@ apt update && apt upgrade
 apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
-git clone https://github.com/HACKERESOBERANO/batvip/
+git clone https://github.com/HACKERESOBERANO/botvip/
 cd batvip
 npm install
 ```
