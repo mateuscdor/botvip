@@ -195,8 +195,8 @@ case 'play': case 'ytplay': {
     let search = await yts(text)
     let dow = search.videos[Math.floor(Math.random() * search.videos.length)]
     let buttons = [
-        {buttonId: `ytmp3 ${dow.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-        {buttonId: `ytmp4 ${dow.url}`, buttonText: {displayText: '► Video'}, type: 1}
+        {buttonId: `${prefix}ytmp3 ${dow.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+        {buttonId: `${prefix}ytmp4 ${dow.url}`, buttonText: {displayText: '► Video'}, type: 1}
     ]
     let buttonMessage = {
         image: { url: dow.thumbnail },
@@ -413,7 +413,7 @@ const sendMsg = await bat.sendMessage(m.chat, listMessage)
 break
             case 'plano': case 'planos': {
                 let buttonse = [
-                    {buttonId: `contratar`, buttonText: {displayText: 'CONTRATAR PLANOS 💲'}, type: 1}
+                    {buttonId: `${prefix}contratar`, buttonText: {displayText: 'CONTRATAR PLANOS 💲'}, type: 1}
                 ]
                 let buttonMessagee = {
                     text: `☑️ 𝗣𝗟𝗔𝗡𝗢𝗦 𝗘 𝗩𝗔𝗟𝗢𝗥𝗘𝗦
@@ -506,7 +506,7 @@ bat.sendMessage(m.chat, { text: teks }, { quoted: m })
                                 hydratedButtons: [{
                                     quickReplyButton: {
                                         displayText: '💸 Planos',
-                                        id: 'planos'
+                                        id: `${prefix}planos`
                                     }  
                                 }]
                             }
@@ -890,8 +890,8 @@ m.reply(consulta)
  
 if (xx.Nome != undefined) {
     let buttons6 = [
-        {buttonId: `tel1 ${text}`, buttonText: {displayText: 'consulta comum 🚀'}, type: 1},
-        {buttonId: `tel2 ${text}`, buttonText: {displayText: 'consulta completa 👑'}, type: 1},
+        {buttonId: `${prefix}tel1 ${text}`, buttonText: {displayText: 'consulta comum 🚀'}, type: 1},
+        {buttonId: `${prefix}tel2 ${text}`, buttonText: {displayText: 'consulta completa 👑'}, type: 1},
         ]
     let buttonMessage6 = {
         text: `Ebaa ${pushname}, Este número foi encontrado 🥳\n\nNúmero: _~${text}~_\nNome da pessoa: _~${xx.Nome}~_`,
@@ -1171,12 +1171,12 @@ break
                             }, {
                                 quickReplyButton: {
                                     displayText: 'CONSULTAS 🔎',
-                                    id: 'consultas'
+                                    id: `${prefix}consultas`
                                 }
                             }, {
                                 quickReplyButton: {
                                     displayText: 'PLANOS 💰',
-                                    id: 'planos'
+                                    id: `${prefix}planos`
                                 }  
                             }]
                         }
@@ -1223,9 +1223,9 @@ case 'check':
     {index: 1, urlButton: {displayText: '🔆 Meu grupo', url: 'https://chat.whatsapp.com/FeBFBymIjuj39NWD94i5Ob'}},
     {index: 2, urlButton: {displayText: '👨‍💻 Meu criador', url: 'https://wa.me/559491423691'}},
     //{index: 6, urlButton: {displayText: '📼 Canal do meu dono', url: 'https://www.youtube.com/MawyDev'}},
-    {index: 3, quickReplyButton: {displayText: '🔎 BUSCAS', id: 'consultas'}},
-    {index: 4, quickReplyButton: {displayText: '💰 PLANOS', id: 'planos'}},
-    {index: 6, quickReplyButton: {displayText: '🟣 MENU COMPLETO', id: 'menu2'}},
+    {index: 3, quickReplyButton: {displayText: '🔎 BUSCAS', id: `${prefix}consultas`}},
+    {index: 4, quickReplyButton: {displayText: '💰 PLANOS', id: `${prefix}planos`}},
+    {index: 6, quickReplyButton: {displayText: '🟣 MENU COMPLETO', id: `${prefix}menu2`}},
 ]
 
 const templateMessage = {
