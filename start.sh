@@ -2,7 +2,7 @@
 GREEN='\033[0;32m'
 while : 
 do
-echo "${GREEN} INICIANDO O KARMA BOT"
+echo "${GREEN} INICIANDO O KARMA BOT - consultas"
     node index.js
     sleep 1
 
