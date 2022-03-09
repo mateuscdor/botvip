@@ -24,8 +24,10 @@ global.APIKeys = {
 global.owner = ['559491423691','559491423691','559491423691','559491423691','559491423691']
 global.sessionName = 'batSession'
 
-// Edite apenas o nescessário:
+// Aqui você configura o prefix
+global.prefa = ['/'] 
 
+// Edite apenas o nescessário:
 // Edições na desc da fig:
 global.packname = 'nome da fig'
 global.author = 'autor na desc da fig'
@@ -36,8 +38,7 @@ global.author = 'autor na desc da fig'
 global.apidados = 'https://apitestekarma.herokuapp.com'; // Compre sua api com o markos: wa.me/559491423691
 global.apiToken = 'coloque sua api aqui'; // Compre seu token com o markos: wa.me/559491423691
 
-// Não é importante
-global.prefa = ['/']
+
 global.sp = '⭔'
 // Fim
 
