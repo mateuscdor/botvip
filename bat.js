@@ -66,6 +66,7 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
+        const ownerNumber = await bat.decodeJid(global.owner)
         const botNumber = await bat.decodeJid(bat.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
@@ -289,7 +290,8 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
         if (!isBotAdmins) throw ("como  vou fzr isso se eu nem sou adm?")
         if (!batdmins) throw (mess.only.gcadmin)
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		if (botNumber.includes(users)) return m.reply('Por quê está tentando me banir???')
+		if (botNumber.includes(users) && ownerNumber.includes(users)) return m.reply('Por quê está tentando me banir???')
+        //if (ownerNumber.includes(users)) return m.reply('Banindo meu dono?')
         await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
@@ -308,7 +310,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
 	case 'promote': {
 		if (!m.isGroup) throw (mess.only.group)
                 if (!isBotAdmins) throw (mess.only.botadm)
-                if (!batdmins) throw (mess.only.gcadmin)
+                if (!batdmins && !isCreator) throw (mess.only.gcadmin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace('👮‍♂️ Mais um com poderes administrativos admnistrativos')
 		await bat.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
