@@ -148,7 +148,19 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
         }
         bat.ev.emit('messages.upsert', msg)
         }
-	    
+
+        // APAGUE O /* E O */ SE QUISER QUE O BOT FAÇA FIGURINHAS AUTOMÁTICO
+	    /*if (/image/.test(mime)) {
+            let media = await quoted.download()
+            let encmedia = await bat.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+            await fs.unlinkSync(encmedia)
+        }
+        if (/video/.test(mime)) {
+            if ((quoted.msg || quoted).seconds > 11) return// m.reply('Marque um video de até 10 segundos!')
+            let media = await quoted.download()
+            let encmedia = await bat.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+            await fs.unlinkSync(encmedia)
+        }*/
         switch(command) {
 
 
@@ -269,12 +281,16 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
            await bat.groupParticipantsUpdate(m.chat, [users4], 'add').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
             }
             break
+
+
 	case 'kick': case 'ban': {
-        if (!isCreator) throw 'comando exclusivo para meu dono'
+        //if (!isCreator) throw 'comando exclusivo para meu dono'
 		if (!m.isGroup) throw (mess.only.group)
-                if (!isBotAdmins) throw ("como  vou fzr isso se eu nem sou adm?")
-		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
+        if (!isBotAdmins) throw ("como  vou fzr isso se eu nem sou adm?")
+        if (!batdmins) throw (mess.only.gcadmin)
+        let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		if (botNumber.includes(users)) return m.reply('Por quê está tentando me banir???')
+        await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
 	break
     case 'donate': case 'contratar': case 'criador': case 'owner': case '1234aaaaadonate': {
