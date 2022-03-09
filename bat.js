@@ -244,7 +244,7 @@ break
 
 		// menu2 de comandos extras
             case 'menu2':
-                m.reply('┏━「🚀 *TODOS*」━┓\n*┃ •* /planos\n*┃ •* /delete\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「💬 *GRUPOS*」━┓\n*┃ •* /Marcar \n*┃ •* /Hide \n*┃ •* /Ban \n*┃ •* /TempBan \n*┃ •* /Add \n*┃ •* /Promote \n*┃ •* /demote \n┗━━━━━━━━━━━━━━┛\n\n\n┏━「🔎 *CONSULTAS*」━┓\n*┃ •* /tel (1, 2 e 3)\n*┃ •* /placa\n*┃ •* /nome\n*┃ •* /cpf (1, 2 e 3)\n*┃ •* /cep\n*┃ •* /ip\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「👤 *DONO*」━┓\n*┃ •* /join\n*┃ •* /unblock\n┗━━━━━━━━━━━━━━┛')
+                m.reply('┏━「🚀 *TODOS*」━┓\n*┃ •* /planos\n*┃ •* /ping\n*┃ •* /delete\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「💬 *GRUPOS*」━┓\n*┃ •* /Marcar \n*┃ •* /Hide \n*┃ •* /Ban \n*┃ •* /TempBan \n*┃ •* /Add \n*┃ •* /Promote \n*┃ •* /demote \n┗━━━━━━━━━━━━━━┛\n\n\n┏━「🔎 *CONSULTAS*」━┓\n*┃ •* /tel (1, 2 e 3)\n*┃ •* /placa\n*┃ •* /nome\n*┃ •* /cpf (1, 2 e 3)\n*┃ •* /cep\n*┃ •* /ip\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「👤 *DONO*」━┓\n*┃ •* /join\n*┃ •* /unblock\n┗━━━━━━━━━━━━━━┛')
                 break
 			
 	
@@ -412,10 +412,10 @@ const listMessage = {
 const sendMsg = await bat.sendMessage(m.chat, listMessage)
 break
             case 'plano': case 'planos': {
-                let buttons = [
+                let buttonse = [
                     {buttonId: `contratar`, buttonText: {displayText: 'CONTRATAR PLANOS 💲'}, type: 1}
                 ]
-                let buttonMessage = {
+                let buttonMessagee = {
                     text: `☑️ 𝗣𝗟𝗔𝗡𝗢𝗦 𝗘 𝗩𝗔𝗟𝗢𝗥𝗘𝗦
 
 (✅) Estou equipado com checkers
@@ -443,10 +443,10 @@ break
 🟢 PIC PAY
 🟢 PIX`,
                     footer: '~ Bot by Markos',
-                    buttons: buttons,
+                    buttons: buttonse,
                     headerType: 2
                 }
-                bat.sendMessage(m.chat, buttonMessage)
+                bat.sendMessage(m.chat, buttonMessagee)
             }
             break
 
@@ -1109,6 +1109,43 @@ m.reply(consulta)
     m.reply(`⚠️ TELEFONE NÃO ENCONTRADO!`)
 }
 } 
+break
+
+case 'ping': case 'botstatus': case 'statusbot': {
+    const used = process.memoryUsage()
+    const cpus = os.cpus().map(cpu => {
+        cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+        return cpu
+    })
+    const cpu = cpus.reduce((last, cpu, _, { length }) => {
+        last.total += cpu.total
+        last.speed += cpu.speed / length
+        last.times.user += cpu.times.user
+        last.times.nice += cpu.times.nice
+        last.times.sys += cpu.times.sys
+        last.times.idle += cpu.times.idle
+        last.times.irq += cpu.times.irq
+        return last
+    }, {
+        speed: 0,
+        total: 0,
+        times: {
+            user: 0,
+            nice: 0,
+            sys: 0,
+            idle: 0,
+            irq: 0
+    }
+    })
+    let timestamp = speed()
+    let latensi = speed() - timestamp
+    neww = performance.now()
+    oldd = performance.now()
+    respon = `💻 Info do Bot
+
+🚀 Tempo de resposta ${latensi.toFixed(4)} _Segundos_ \n\n⏳ Tempo ativo : ${runtime(process.uptime())}`.trim()
+    m.reply(respon)
+}
 break
 
 		// caso queira um menu de template button com imagem, basta apagar o /* do começo e o */ do final do comando.
