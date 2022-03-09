@@ -7,11 +7,11 @@ Caso divulgue algum comando deixe os créditos, fazer ele foi desgaste.
 Agradeço pela compreensão. 
 
 📝 NOTAS:
-  * Algumas cases criada por Dark
+  * Algumas cases criada por Dark 
   * Total agradecimento e créditos a ele <3
 */
 
-//api do zapo 
+// API DO ZIP ZOP
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
@@ -28,7 +28,7 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 
-// read database
+// CARREGANDO DATABESES
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 if (global.db) global.db = {
     sticker: {},
@@ -49,10 +49,14 @@ let tebaklirik = db.game.lirik = []
 let tebaktebakan = db.game.tebakan = []
 let vote = db.others.vote = []
 
-//SISTEMA PREMIUM
-let prem2 = [`556796877412@s.whatsapp.net`, `558898078824@s.whatsapp.net`, `556599081355@s.whatsapp.net`, `556198415661@s.whatsapp.net`, `555184891856@s.whatsapp.net`, `557996121022@s.whatsapp.net`, `559491423691@s.whatsapp.net`]
+// SISTEMA PREMIUM
+let prem2 = [`559491423691@s.whatsapp.net`, `coloque o numero @s.whatsapp.net`, `nao tire o @s.whatsapp.net`, `adicione quantos vips vc quiser@s.whatsapp.net`]
+// O NÚMERO DA PESSOA DEVE FICAR TODO JUNTO ANTES DO "@s.whatsapp.net"
+
 var Puxada = true
 
+
+// ALGUMAS DEFINIÇÕES
 module.exports = bat = async (bat, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
@@ -72,7 +76,7 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
         const mime = (quoted.msg || quoted).mimetype || ''
 	    const isMedia = /image|video|sticker|audio/.test(mime)
 	
-        // Group
+        // GRUPOS
         const groupMetadata = m.isGroup ? await bat.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
         const participants = m.isGroup ? await groupMetadata.participants : ''
@@ -82,7 +86,7 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
     	const batdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
         
 
-	 //----------------------------- MENSAGENS PARA USAR EX mess.only.admins ------------------------------------\\
+	 //----------------------------- MENSAGENS PARA USAR EX: mess.only.admins ------------------------------------\\
     
 		mess = {
 			wait: 'Por favor, aguarde um pouco.',
@@ -108,7 +112,7 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
             botadm: 'Eu preciso ter adm pra executar esse comando :)'
         }
 
-        // Public & Self
+        // PÚBLICO E PRIVADO
         if (!bat.public) {
             if (!m.key.fromMe) return
         }
@@ -119,13 +123,13 @@ module.exports = bat = async (bat, m, chatUpdate, store) => {
             console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
         }
 	
-	// escrever na database a cada 1 minuto
+	// ESCREVER NA DATABASE A CADA 1 MINUTO
 	setInterval(() => {
             fs.writeFileSync('./src/database.json', JSON.stringify(global.db, null, 2))
-            //console.log('Updating Database...')
+            //console.log('Updating Database...') // ATIVE ISSO CASO QUEIRA (manda msg no console a cada 1 minuto)
         }, 60 * 1000)
 
-        // Resposta do cmd com mídia
+        // RESPOSTA DO COMANDO COM MÍDIA 
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
         let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
         let { text, mentionedJid } = hash
@@ -174,22 +178,22 @@ case 'play': case 'ytplay': {
     if (!text) throw `Example : ${prefix + command} pablo vitar seu amor me pegou`
     let yts = require("yt-search")
     let search = await yts(text)
-    let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+    let dow = search.videos[Math.floor(Math.random() * search.videos.length)]
     let buttons = [
-        {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-        {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
+        {buttonId: `ytmp3 ${dow.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+        {buttonId: `ytmp4 ${dow.url}`, buttonText: {displayText: '► Video'}, type: 1}
     ]
     let buttonMessage = {
-        image: { url: anu.thumbnail },
+        image: { url: dow.thumbnail },
         caption: `
-✏️ Título: ${anu.title}
-⌛ Duração: ${anu.timestamp}
-👁‍🗨 Visualizações : ${anu.views}
-📅 Data De Envio: ${anu.ago}
-🎭 Autor : ${anu.author.name}
-👤 Canal: ${anu.author.url}
-🎶 Descrição : ${anu.description}
-🔗 Url : ${anu.url}`,
+✏️ Título: ${dow.title}
+⌛ Duração: ${dow.timestamp}
+👁‍🗨 Visualizações : ${dow.views}
+📅 Data De Envio: ${dow.ago}
+🎭 Autor : ${dow.author.name}
+👤 Canal: ${dow.author.url}
+🎶 Descrição : ${dow.description}
+🔗 Url : ${dow.url}`,
         footer: `🎶 Usuario: ${m.pushName}`,
         buttons: buttons,
         headerType: 4
@@ -223,12 +227,17 @@ break
 //----------------------------- FIM ------------------------------\\
 
 
-//----------------------------- COMANDOS DE ADMNISTRAÇÃO ------------------------------\\
-
+		// menu2 de comandos extras
             case 'menu2':
                 m.reply('┏━「🚀 *TODOS*」━┓\n*┃ •* /planos\n*┃ •* /delete\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「💬 *GRUPOS*」━┓\n*┃ •* /Marcar \n*┃ •* /Hide \n*┃ •* /Ban \n*┃ •* /TempBan \n*┃ •* /Add \n*┃ •* /Promote \n*┃ •* /demote \n┗━━━━━━━━━━━━━━┛\n\n\n┏━「🔎 *CONSULTAS*」━┓\n*┃ •* /tel (1, 2 e 3)\n*┃ •* /placa\n*┃ •* /nome\n*┃ •* /cpf (1, 2 e 3)\n*┃ •* /cep\n*┃ •* /ip\n┗━━━━━━━━━━━━━━┛\n\n\n┏━「👤 *DONO*」━┓\n*┃ •* /join\n*┃ •* /unblock\n┗━━━━━━━━━━━━━━┛')
                 break
+			
+	
 
+			
+//----------------------------- COMANDOS DE ADMNISTRAÇÃO ------------------------------\\
+			
+			
             case 'marcar': {
                 if (!m.isGroup) throw (mess.only.group)
                 if (!isBotAdmins) throw (mess.only.botadm)
@@ -272,15 +281,6 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
         bat.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/39f83106b3cfe2125c39a.jpg' }, caption: `🔆 - *Olá ${m.pushName}*,\nDesde já obriado por querer me contratar!\n\n✅ - *Para contratar um dos meus planos fale com meu dono:*\n\nhttps://wa.me/559491423691` }, { quoted: m })
     }
     break
-	case 'join': {
-                if (!isCreator) throw 'comando exclusivo para meu dono'
-                if (!text) throw 'falta o link do grupo!'
-                if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalido!'
-                m.reply('espere meu nobre')
-                let result = args[0].split('https://chat.whatsapp.com/')[1]
-                await bat.groupAcceptInvite(result).then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
-            }
-            break
 	case 'add': {
 		if (!m.isGroup) throw (mess.only.group)
                 if (!isBotAdmins) throw (mess.only.botadm)
@@ -318,6 +318,19 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
                 bat.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
+			
+	
+			
+ 	// faz o bot entrar no grupo pelo link q você mandar
+	case 'join': {
+                if (!isCreator) throw 'comando exclusivo para meu dono'
+                if (!text) throw 'falta o link do grupo!'
+                if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalido!'
+                m.reply('espere meu nobre')
+                let result = args[0].split('https://chat.whatsapp.com/')[1]
+                await bat.groupAcceptInvite(result).then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
+            }
+            break
 
 //----------------------------- FIM ------------------------------\\
 // este comando está em manutenção 👇
@@ -346,7 +359,6 @@ const sections = [
    {
 	title: "CONSULTAS DE NOME E PLACA",
 	rows: [
-	    //{title: "Cpf1", rowId: "cpf1", description: "Puxada de cpf comum"},
 	    {title: "Placa", rowId: "placa", description: "Puxada completa de placas 🔥"},
 	    {title: "Nome", rowId: "nome", description: "Puxada simples - em manutenção 🛠"}
 	]
@@ -384,7 +396,32 @@ break
                     {buttonId: `contratar`, buttonText: {displayText: 'CONTRATAR PLANOS 💲'}, type: 1}
                 ]
                 let buttonMessage = {
-                    text: '☑️ 𝗣𝗟𝗔𝗡𝗢𝗦 𝗘 𝗩𝗔𝗟𝗢𝗥𝗘𝗦\n\n━━━━━━━━━━━━━━━━━━━━━\n✅ CONSULTAS DISPONÍVEIS\n\n🔘 CPF\n🔘 CNS\n🔘 CNPJ\n🔘 NOME\n🔘 PLACA \n🔘 TELEFONE\n\n━━━━━━━━━━━━━━━━━━━━━\n♾️ CONSULTAS ILIMITADA  \n\n🔘 FAÇA CONSULTAS SEM LIMITE\n\n━━━━━━━━━━━━━━━━━━━━━\n👤 PLANOS  INDIVIDUAIS\n\n🔘 07 DIAS = R$ 10,00\n🔘 30 DIAS = R$ 20,00\n\n━━━━━━━━━━━━━━━━━━━━━\n👥 PLANOS PARA GRUPOS\n\n🔘 07 DIAS = R$ 20,00\n🔘 15 DIAS = R$ 30,00\n🔘 30 DIAS = R$ 45,00\n\n━━━━━━━━━━━━━━━━━━━━━\n💰 FORMAS DE PAGAMENTO\n\n🔘 MERCADO PAGO\n🔘 TRANSFERÊNCIA PIX\n\n━━━━━━━━━━━━━━━━━━━━━',
+                    text: `☑️ 𝗣𝗟𝗔𝗡𝗢𝗦 𝗘 𝗩𝗔𝗟𝗢𝗥𝗘𝗦
+
+(✅) Estou equipado com checkers
+(✅) Consultas
+(✅) Comandos para grupos
+(✅) E conversões
+
+🔘 Escolha um plano e selecione uma forma de pagamento abaixo.
+
+👤 PLANOS  INDIVIDUAIS
+
+🟢 07 DIAS = R$ 10,00
+🟢 30 DIAS = R$ 20,00
+
+👥 PLANOS PARA GRUPOS
+
+🟢 07 DIAS = R$ 20,00
+🟢 15 DIAS = R$ 30,00
+🟢 30 DIAS = R$ 45,00
+
+💰 FORMAS DE PAGAMENTO
+
+🟢 MERCADO PAGO
+🟢 PAYPAL
+🟢 PIC PAY
+🟢 PIX`,
                     footer: '~ Bot by Markos',
                     buttons: buttons,
                     headerType: 2
@@ -843,19 +880,6 @@ if (xx.Nome != undefined) {
         headerType: 2
     }
     bat.sendMessage(m.chat, buttonMessage6)
-    /*buttons6 = [
-        {buttonId: `tel ${text}`, buttonText: {displayText: 'consulta comum'}, type: 1},
-        {buttonId: `tel2 ${text}`, buttonText: {displayText: 'consulta completa'}, type: 1},
-        ]
- 
-        buttonMessage6 = {
-        image: {url: './lib/bat.jpg'},
-        caption: "Este número foi encontrado 🥳",
-        footerText: 'escolha o seu tipo de consulta:',
-        buttons: buttons6,
-        headerType: 4
-        }
-        await bat.sendMessage(m.chat, buttonMessage6)*/
 } else {
     
     m.reply(`⚠️ TELEFONE NÃO ENCONTRADO!`)
@@ -1067,7 +1091,8 @@ m.reply(consulta)
 } 
 break
 
-
+		// caso queira um menu de template button com imagem, basta apagar o /* do começo e o */ do final do comando.
+			
             /*case 'start': case 'menu': case 'iniciar': case 'help': {
                 anu = `OLÁ!!\nIREI FACILITAR MUITO SUA VIDA FAZENDO CONSULTAS!\n\n_selecione uma opção_`
                 let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/bat.jpg') }, { upload: bat.waUploadToServer })
@@ -1104,54 +1129,6 @@ break
                 //bat.relayMessage(template.message)
             }
             break*/
-            /*case 'bimg':
-                buttons = [
-                {buttonId: 'id1', buttonText: {displayText: 'Button 1'}, type: 1},
-                {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},
-                {buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}
-                ]
-         
-                buttonMessage = {
-                image: {url: './lib/bat.jpg'},
-                caption: "Hi it's button message",
-                footerText: 'Hello World',
-                buttons: buttons,
-                headerType: 4
-                }
-                await bat.sendMessage(m.chat, buttonMessage)
-                break*/
-
-                /*case 'bin': {
-                    let buttons5 = [
-                        {buttonId: `contratar`, buttonText: {displayText: 'CONTRATAR PLANOS 💲'}, type: 1}
-                    ]
-                    let buttonMessage5 = {
-                        text: '☑️ 𝗣𝗟𝗔𝗡𝗢𝗦 𝗘 𝗩𝗔𝗟𝗢𝗥𝗘𝗦\n\n━━━━━━━━━━━━━━━━━━━━━\n✅ CONSULTAS DISPONÍVEIS\n\n🔘 CPF\n🔘 CNS\n🔘 CNPJ\n🔘 NOME\n🔘 PLACA \n🔘 TELEFONE\n\n━━━━━━━━━━━━━━━━━━━━━\n♾️ CONSULTAS ILIMITADA  \n\n🔘 FAÇA CONSULTAS SEM LIMITE\n\n━━━━━━━━━━━━━━━━━━━━━\n👤 PLANOS  INDIVIDUAIS\n\n🔘 07 DIAS = R$ 10,00\n🔘 30 DIAS = R$ 20,00\n\n━━━━━━━━━━━━━━━━━━━━━\n👥 PLANOS PARA GRUPOS\n\n🔘 07 DIAS = R$ 20,00\n🔘 15 DIAS = R$ 30,00\n🔘 30 DIAS = R$ 45,00\n\n━━━━━━━━━━━━━━━━━━━━━\n💰 FORMAS DE PAGAMENTO\n\n🔘 MERCADO PAGO\n🔘 TRANSFERÊNCIA PIX\n\n━━━━━━━━━━━━━━━━━━━━━',
-                        footer: '~ Bot by Markos',
-                        buttons: buttons5,
-                        headerType: 2
-                    }
-                    bat.sendMessage(m.chat, buttonMessage5)
-                }
-                break*/
-/* 
-                case 'bimg':
-                buttons5 = [
-                {buttonId: 'menu', buttonText: {displayText: 'Button 1'}, type: 1},
-                {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},
-                {buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}
-                ]
-         
-                buttonMessage5 = {
-                //image: {url: './lib/bat.jpg'},
-                caption: "Hi it's button message",
-                footerText: 'Hello World',
-                buttons5: buttons,
-                headerType: 4
-                }
-                await bat.sendMessage(m.chat, buttonMessage5)
-                brea
-*/
 //------------------------ CASES DO DARK -----------------------\\
 
 case 'check':
@@ -1167,37 +1144,14 @@ case 'check':
         bat.sendText(m.chat, 'Lista de Onlines:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
  }
  break
-    case 'setidgp':
-                    idgpp = `${q}`
-                    m.reply(`Pronto, ja coletei os membros desse grupo, só digitar /confg add agora.`)
-                    break
-   
+			// teste para enviar mensagem na id q vc colocar (para ver uma id basta dar /getid)
         case 'testsend':
             bat.sendMessage(`120363022980336151@g.us`, {text: 'a'}, m)
             break
         case 'getid':
             m.reply(m.chat)
             break
-                case 'idget':
-                    if (!text) throw 'Mande um link de um gp!'
-                    if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalido!'
-                   
-                    let result = args[0].split('https://chat.whatsapp.com/')[1]
-                    await bat.groupAcceptInvite(result).then(res2 => {
-                        var geitdd = res2.replace(`""`, ``);
-                        m.reply(geitdd)
-                    })
-                        break
-
-            case 'confg': 
-            if (!text) throw 'Digite o id do gp'
-            const groupMetadata2 = m.isGroup ? await bat.groupMetadata(`${text}`).catch(e => {}) : ''
-    const participants2 = m.isGroup ? await groupMetadata2.participants : ''
-                    for (let mem of participants2) {   
- bat.groupParticipantsUpdate(m.chat, [`${mem.id.split('0 @')[0]}@s.whatsapp.net`], 'add')      
-
-}
-                 break
+			
                 case 'linkgp': case 'linkgc': {
                     if (!m.isGroup) return m.reply (mess.group)
                     let response = await bat.groupInviteCode(m.chat)
@@ -1214,6 +1168,7 @@ case 'check':
     //{index: 6, urlButton: {displayText: '📼 Canal do meu dono', url: 'https://www.youtube.com/MawyDev'}},
     {index: 3, quickReplyButton: {displayText: '🔎 BUSCAS', id: 'consultas'}},
     {index: 4, quickReplyButton: {displayText: '💰 PLANOS', id: 'planos'}},
+    {index: 6, quickReplyButton: {displayText: '🟣 MENU COMPLETO', id: 'menu2'}},
 ]
 
 const templateMessage = {
