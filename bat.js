@@ -371,32 +371,32 @@ const sections = [
     {
 	title: "CONSULTAS DE TELFONE:",
 	rows: [
-	    {title: "Tel", rowId: "tel", description: "Puxada de telefone basica ☕"},
-	    {title: "Tel2", rowId: "tel2", description: "Puxada mais detalhada 🔥"},
-        {title: "Tel3", rowId: "tel3", description: "Puxada por marcação 🆕"}
+	    {title: "Tel", rowId: `${prefix}tel`, description: "Puxada de telefone basica ☕"},
+	    {title: "Tel2", rowId: `${prefix}tel2`, description: "Puxada mais detalhada 🔥"},
+        {title: "Tel3", rowId: `${prefix}tel3`, description: "Puxada por marcação 🆕"}
 	]
     },
    {
 	title: "CONSULTAS DE NOME E PLACA",
 	rows: [
-	    {title: "Placa", rowId: "placa", description: "Puxada completa de placas 🔥"},
-	    {title: "Nome", rowId: "nome", description: "Puxada simples - em manutenção 🛠"}
+	    {title: "Placa", rowId: `${prefix}placa`, description: "Puxada completa de placas 🔥"},
+	    {title: "Nome", rowId: `${prefix}nome`, description: "Puxada simples - em manutenção 🛠"}
 	]
     },
    {
 	title: "CONSULTAS DE CPF:",
 	rows: [
-	    {title: "Cpf1", rowId: "cpf1", description: "Puxada de cpf comum ☕"},
-	    {title: "Cpf2", rowId: "cpf2", description: "puxada de cpf detalhada 🔎"},
-	    {title: "Cpf3", rowId: "cpf3", description: "puxada de cpf avançada 🔥"}
+	    {title: "Cpf1", rowId: `${prefix}cpf1`, description: "Puxada de cpf comum ☕"},
+	    {title: "Cpf2", rowId: `${prefix}cpf2`, description: "puxada de cpf detalhada 🔎"},
+	    {title: "Cpf3", rowId: `${prefix}cpf3`, description: "puxada de cpf avançada 🔥"}
 	]
     },
     {
 	title: "CONSULTAS GRÁTIS:",
 	rows: [
-	    {title: "Cep", rowId: "cep", description: "Puxada de cep 🏡"},
-	    {title: "Ip", rowId: "ip", description: "Puxada de ip ℹ"},
-	    {title: "Bin", rowId: "bin", description: "Puxada de bin 💳"}
+	    {title: "Cep", rowId: `${prefix}cep`, description: "Puxada de cep 🏡"},
+	    {title: "Ip", rowId: `${prefix}ip`, description: "Puxada de ip ℹ"},
+	    {title: "Bin", rowId: `${prefix}bin`, description: "Puxada de bin 💳"}
 	]
     },
 ]
@@ -883,7 +883,7 @@ m.reply(consulta)
         var resultado3 = query.replace(/(\d{2})/, "$19")
          return m.reply(`Identifiquei que esse número marcado tem um 9 a menos tente colocar mais ou menos assim:\n\n❌ - ERRADO: ${query}\n✅ - CERTO (ou não): ${resultado3}\n\n Caso eu tenha configurado errado, ajuste manualmente e puxe usando o /tel`);
      }
-    if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
+    if(query.length > 11) return m.reply('❌ - Isso é um telefone ou um cpf?');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...*`)
                 xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
@@ -922,7 +922,7 @@ if (xx.Nome != undefined) {
         var resultado3 = query.replace(/(\d{2})/, "$19")
          return m.reply(`Identifiquei que esse número marcado tem um 9 a menos tente colocar mais ou menos assim:\n\n❌ - ERRADO: ${query}\n✅ - CERTO (ou não): ${resultado3}\n\n Caso eu tenha configurado errado, ajuste manualmente e puxe usando o /tel`);
      }
-    if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
+    if(query.length > 11) return m.reply('❌ - Isso é um telefone ou um cpf?');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/telefone 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
                 xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
@@ -976,7 +976,7 @@ m.reply(consulta)
         var resultado3 = query.replace(/(\d{2})/, "$19")
          return m.reply(`Identifiquei que esse número marcado tem um 9 a menos tente colocar mais ou menos assim:\n\n❌ - ERRADO: ${query}\n✅ - CERTO (ou não): ${resultado3}\n\n Caso eu tenha configurado errado, ajuste manualmente e puxe usando o /tel`);
      }
-    if(query.length > 11) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
+    if(query.length > 11) return m.reply('❌ - Isso é um telefone ou um cpf?');
     if(isNaN(query)) return m.reply('☑️ 𝗖𝗢𝗡𝗦𝗨𝗟𝗧𝗔 𝗧𝗘𝗟𝗘𝗙𝗢𝗡𝗘\n\n━━━━━━━━━━━━━━━━━━━━━\nConsulta completa de Número de Telefone, retorna todos \nos dados do dono do Telefone.\n\nFormato:\n51995379721\n\n/tel2 51995379721\n\n━━━━━━━━━━━━━━━━━━━━━');
                 m.reply(`*Ei ${pushname} já estou consultando...* Enquanto isso tome um café☕\nCaso não retorne nada, nao foi encontrado.`)
                 xx = await fetchJson(`${global.apidados}/telefone/${text}/${global.apiToken}`)
