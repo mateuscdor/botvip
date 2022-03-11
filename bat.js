@@ -352,6 +352,59 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
             }
             break
 
+
+            case 'bcgc': case 'bcgroup': {
+                if (!isCreator) throw mess.owner
+                if (!text) throw `Cadê o testo? kkkk\n\nExemplo : ${prefix + command} adm está com fimose ainda😢`
+                let getGroups = await bat.groupFetchAllParticipating()
+                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+                let maw = groups.map(v => v.id)
+                m.reply(`Enviando transmissão para ${maw.length} Chat\nTempo de conclusão ${maw.length} segundos`)
+                for (let i of maw) {
+                    await sleep(1500)
+                    let btn = [{
+                        urlButton: {
+                            displayText: 'Meu grupo 🔆',
+                            url: 'https://chat.whatsapp.com/FeBFBymIjuj39NWD94i5Ob'
+                        }
+                    }, {
+                        quickReplyButton: {
+                            displayText: 'CONSULTAS 🔎',
+                            id: `${prefix}consultas`
+                        }
+                    }]
+                      let txt = `「 TRANSMISSÃO - KARMA 」\n\n${text}`
+                      bat.send5ButImg(i, txt, bat.user.name, global.thumb, btn)
+                    }
+                m.reply(`Transmissão enviada para o grupo ${anu.length}`)
+            }
+            break
+            case 'bc': case 'transmitir': case 'send': {
+                if (!isCreator) throw mess.owner
+                if (!text) throw `Cadê o testo? kkkk\n\nExemplo : ${prefix + command} adm está com fimose ainda😢`
+                let maw = await store.chats.all().map(v => v.id)
+               m.reply(`Enviando transmissão para ${maw.length} Chat\nTempo de conclusão ${maw.length} segundos`)
+
+		for (let yoi of maw) {
+		    await sleep(1500)
+		    let btn = [{
+                    urlButton: {
+                        displayText: 'Meu grupo 🔆',
+                        url: 'https://chat.whatsapp.com/FeBFBymIjuj39NWD94i5Ob'
+                    }
+                }, {
+                    quickReplyButton: {
+                        displayText: 'CONSULTAS 🔎',
+                        id: `${prefix}consultas`
+                    }
+                }]
+                      let txt = `「 TRANSMISSÃO - KARMA 」\n\n${text}`
+                      bat.send5ButImg(yoi, txt, bat.user.name, global.thumb, btn)
+		}
+		m.reply('BroadCast concluida🥱')
+            }
+            break
+
 //----------------------------- FIM ------------------------------\\
 // este comando está em manutenção 👇
             case 'puxada':
