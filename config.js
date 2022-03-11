@@ -36,7 +36,7 @@ global.author = 'autor na desc da fig'
 // Forma correta: https://suApi.herokuapp.com
 // Forma incorreta: suApi.herokuapp.com/
 global.apidados = 'https://apitestekarma.herokuapp.com'; // Compre sua api com o markos: wa.me/559491423691
-global.apiToken = 'coloque sua api aqui'; // Compre seu token com o markos: wa.me/559491423691
+global.apiToken = 'coloque seu token aqui'; // Compre seu token com o markos: wa.me/559491423691
 
 
 global.sp = '⭔'
