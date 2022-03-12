@@ -292,7 +292,7 @@ let teks = `══✪〘 *👥 Marquei geral* 〙✪══
         if (!isBotAdmins) throw ("como  vou fzr isso se eu nem sou adm?")
         if (!batdmins) throw (mess.only.gcadmin)
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		if (botNumber.includes(users) && ownerNumber.includes(users)) return m.reply('Por quê está tentando me banir???')
+		if (botNumber.includes(users)) return m.reply('Por quê está tentando me banir???')
         //if (ownerNumber.includes(users)) return m.reply('Banindo meu dono?')
         await bat.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => console.log(jsonformat(res))).catch((err) => console.log(jsonformat(err)))
 	}
